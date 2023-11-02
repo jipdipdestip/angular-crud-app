@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+
+body{
+    overflow-x: hidden;
+    background-color: rgb(59, 62, 69);
+    color: white;
+}
+
+.btn-square-md {
+    width: 85px !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    height: 85px !important;
+    text-align: center;
+    padding: 0px;
+    font-size:30px;
+    }
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}

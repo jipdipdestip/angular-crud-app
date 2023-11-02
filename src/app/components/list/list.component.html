@@ -1,0 +1,98 @@
+<div class="container mt-5">
+  <h2>users</h2>
+
+  <div *ngIf="users.length > 0">
+    <div class="overflow-auto mt-5" style="max-height: 700px;">
+      <ul>
+        <li *ngFor="let user of users" class="bg-secondary rounded p-4 mb-4 shadow">
+          {{ user.fullName }}
+          <div class="buttons">
+            <button class="btn btn-primary theButtons" (click)="showUserAdressService(user)"><fa-icon
+                [icon]="faInfo"></fa-icon>
+            </button>
+
+            <button class="btn btn-success theButtons" (click)="editUserService(user)">
+              <fa-icon [icon]="faPencil"></fa-icon>
+            </button>
+
+            <button class="btn btn-danger theButtons" (click)="deleteUserService(user)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="users.length === 0">
+    <p>There is nothing here yet. Please add an user.</p>
+  </div>
+</div>
+
+<div *ngIf="isModalOpen" class="modal">
+  <div class="modal-content bg-secondary">
+    <span class="close display-5" (click)="closePopup()"><fa-icon [icon]="faTimes"></fa-icon></span>
+    <h2>more info</h2>
+    <br>
+    <div *ngIf="selectedUser">
+      <h4>full name</h4> {{ selectedUser.fullName }}
+      <br>
+      <br>
+      <h4>full adress</h4> {{ selectedUser.fullAdress }}
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isEditModalOpen" class="modal">
+  <div class="modal-content-edit bg-secondary">
+    <h2>Edit User</h2>
+    <br>
+    <div *ngIf="selectedUser">
+      <form (ngSubmit)="saveUserChangesService()">
+        <div class="form-group">
+          <label for="editName">Name<span class="text-danger">*</span></label>
+          <input class="form-control" type="text" id="editName" name="editName" [(ngModel)]="selectedUser.name"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="editInfix">Infix</label>
+          <input class="form-control" type="text" id="editInfix" name="editInfix" [(ngModel)]="selectedUser.infix"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="editLastname">Lastname<span class="text-danger">*</span></label>
+          <input class="form-control" type="text" id="editLastname" name="editLastname"
+            [(ngModel)]="selectedUser.lastname" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editStreet">Street<span class="text-danger">*</span></label>
+          <input class="form-control" type="text" id="editStreet" name="editStreet" [(ngModel)]="selectedUser.street"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="editHousenumber">Housenumber<span class="text-danger">*</span></label>
+          <input class="form-control" type="text" id="editHousenumber" name="editHousenumber"
+            [(ngModel)]="selectedUser.housenumber" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editPostalcode">Postalcode<span class="text-danger">*</span></label>
+          <input class="form-control" type="text" id="editPostalcode" name="editPostalcode"
+            [(ngModel)]="selectedUser.postalcode" required>
+        </div>
+
+        <div class="form-group">
+          <label for="editCity">City<span class="text-danger">*</span></label>
+          <input class="form-control" type="text" id="editCity" name="editCity" [(ngModel)]="selectedUser.city"
+            required>
+        </div>
+
+        <button class="btn btn-success shadow mt-3" type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+</div>
