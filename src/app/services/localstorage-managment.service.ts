@@ -11,8 +11,6 @@ export class LocalstorageManagmentService {
     public userList: User[] = [];
     public isEditModalOpen: boolean = false;
     public formData: any = {};
-
-
     public name: string = '';
     public infix: string = '';
     public lastname: string = '';
@@ -35,39 +33,6 @@ export class LocalstorageManagmentService {
         }
     }
 
-    onSubmit() {
-        if (
-            this.isFieldEmpty(this.name) ||
-            this.isFieldEmpty(this.lastname) ||
-            this.isFieldEmpty(this.street) ||
-            this.isFieldEmpty(this.housenumber) ||
-            this.isFieldEmpty(this.postalcode) ||
-            this.isFieldEmpty(this.city)
-        ) {
-            alert('please fill in the required fields')
-            return;
-        }
-
-        const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
-
-        const newUser = {
-            id: new Date().getTime().toString(),
-            name: this.name,
-            infix: this.infix,
-            lastname: this.lastname,
-            street: this.street,
-            housenumber: this.housenumber,
-            postalcode: this.postalcode,
-            city: this.city
-        };
-
-        storedUsers.push(newUser);
-
-        localStorage.setItem('users', JSON.stringify(storedUsers));
-
-        this.formData = {};
-        this.router.navigate([''])
-    }
 
     isFieldEmpty(value: any): boolean {
         return value === '' || value === null || value === undefined;

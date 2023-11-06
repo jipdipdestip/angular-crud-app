@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./addpeople.component.scss']
 })
 export class AddpeopleComponent {
-
+ 
 }
+

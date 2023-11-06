@@ -1,39 +1,39 @@
-<form class="container" (ngSubmit)="onSubmitService()">
+<form class="container" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name">Name<span class="text-danger">*</span></label>
-    <input placeholder="" class="form-control" type="text" id="name" name="name" [(ngModel)]="LocalstorageManagmentService.name" required>
+    <input placeholder="" class="form-control" type="text" id="name" name="name" [(ngModel)]="name" required>
   </div>
 
   <div class="form-group">
     <label for="infix">Infix</label>
-    <input placeholder="" class="form-control" type="infix" id="infix" name="infix" [(ngModel)]="LocalstorageManagmentService.infix" required>
+    <input placeholder="" class="form-control" type="infix" id="infix" name="infix" [(ngModel)]="infix" required>
   </div>
 
   <div class="form-group">
     <label for="lastname">Lastname<span class="text-danger">*</span></label>
-    <input placeholder="" class="form-control" type="lastname" id="lastname" name="lastname" [(ngModel)]="LocalstorageManagmentService.lastname" required>
+    <input placeholder="" class="form-control" type="lastname" id="lastname" name="lastname" [(ngModel)]="lastname" required>
   </div>
 
   <div class="form-group">
     <label for="street">Street<span class="text-danger">*</span></label>
-    <input class="form-control" type="street" id="street" name="street" [(ngModel)]="LocalstorageManagmentService.street" required>
+    <input class="form-control" type="street" id="street" name="street" [(ngModel)]="street" required>
   </div>
 
   <div class="form-group">
     <label for="housenumber">Housenumber<span class="text-danger">*</span></label>
     <input class="form-control" type="housenumber" id="housenumber" name="housenumber"
-      [(ngModel)]="LocalstorageManagmentService.housenumber" required>
+      [(ngModel)]="housenumber" required>
   </div>
   
   <div class="form-group">
     <label for="postalcode">Postalcode<span class="text-danger">*</span></label>
-    <input class="form-control" type="postalcode" id="postalcode" name="postalcode" [(ngModel)]="LocalstorageManagmentService.postalcode"
+    <input class="form-control" type="postalcode" id="postalcode" name="postalcode" [(ngModel)]="postalcode"
       required>
   </div>
 
   <div class="form-group">
     <label for="city">City<span class="text-danger">*</span></label>
-    <input class="form-control" type="city" id="city" name="city" [(ngModel)]="LocalstorageManagmentService.city" required>
+    <input class="form-control" type="city" id="city" name="city" [(ngModel)]="city" required>
   </div>
 
   <button class="btn btn-success shadow mt-5 ms-1" type="submit">submit</button>
