@@ -8,7 +8,7 @@ import { Route, Router } from '@angular/router';
 export class LocalstorageManagmentService {
     public selectedUser: User | null = null;
     public isModalOpen: boolean = false;
-    public users: User[] = [];
+    public userList: User[] = [];
     public isEditModalOpen: boolean = false;
     public formData: any = {};
 
@@ -26,11 +26,11 @@ export class LocalstorageManagmentService {
     ngOnInit() {
         const storedUsers = localStorage.getItem('users');
         if (storedUsers) {
-            const tmpArr = JSON.parse(storedUsers);
+            const userData = JSON.parse(storedUsers);
 
-            tmpArr.forEach((userData: any) => {
+            userData.forEach((userData: any) => {
                 const user = new User(userData);
-                this.users.push(user);
+                this.userList.push(user);
             });
         }
     }
@@ -79,9 +79,9 @@ export class LocalstorageManagmentService {
     }
 
     deleteUser(user: User) {
-        const index = this.users.indexOf(user);
+        const index = this.userList.indexOf(user);
         if (confirm('are you sure?')) {
-            this.users.splice(index, 1);
+            this.userList.splice(index, 1);
             const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
             const updatedUsers = storedUsers.filter((u: { id: string; }) => u.id !== user.id);
             localStorage.setItem('users', JSON.stringify(updatedUsers));
