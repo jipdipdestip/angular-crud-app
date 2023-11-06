@@ -1,6 +1,4 @@
-$btnShadowColor: rgba(82, 82, 82, 0.747);
-
-
+$shadowColor: rgba(82, 82, 82, 0.747);
 
 ul {
   list-style-type: none;
@@ -12,7 +10,7 @@ ul {
   button {
     margin-left: 8px;
     margin-right: 8px;
-    box-shadow: 0px 3px 2px $btnShadowColor;
+    box-shadow: 0px 3px 2px $shadowColor;
   }
 }
 
@@ -55,11 +53,9 @@ ul {
   padding: 10px;
   cursor: pointer;
   margin-right: 20px;
-}
-
-/* Style the close button */
-.close:hover {
-  color: red;
+  :hover {
+    color: red;
+  }
 }
 
 .theButtons{

@@ -16,9 +16,4 @@ export class UserFormComponent {
   onSubmitService() {
     this.LocalstorageManagmentService.onSubmit()
   }
-
-  isFieldEmpty(value: any): boolean {
-    return value === '' || value === null || value === undefined;
-  }
-
 }

@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit {
   public selectedUser: User | null = null;
   public isEditModalOpen: boolean = false;
   public isModalOpen: boolean = false;
-  public users: User[] = [];
+  public userList: User[] = [];
   public faTrash = faTrash;
   public faPencil = faPencil;
   public faInfo = faInfo;
@@ -27,11 +27,11 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     const storedUsers = localStorage.getItem('users');
     if (storedUsers) {
-      const tmpArr = JSON.parse(storedUsers);
+      const userData = JSON.parse(storedUsers);
 
-      tmpArr.forEach((userData: any) => {
+      userData.forEach((userData: any) => {
         const user = new User(userData);
-        this.users.push(user);
+        this.userList.push(user);
       });
     }
   }
@@ -56,12 +56,12 @@ export class UserListComponent implements OnInit {
     this.LocalstorageManagmentService.saveUserChanges();
     
     if (this.selectedUser) {
-      const index = this.users.indexOf(this.selectedUser);
+      const index = this.userList.indexOf(this.selectedUser);
   
       if (index !== -1) {
-        this.users[index] = this.selectedUser;
+        this.userList[index] = this.selectedUser;
   
-        localStorage.setItem('users', JSON.stringify(this.users));
+        localStorage.setItem('users', JSON.stringify(this.userList));
       }
   
       this.selectedUser = null;
@@ -70,9 +70,6 @@ export class UserListComponent implements OnInit {
     }
   }
     
-  isFieldEmpty(value: any): boolean {
-    return value === '' || value === null || value === undefined;
-  }
 
   closePopup() {
     this.isModalOpen = false;

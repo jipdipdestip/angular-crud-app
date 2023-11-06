@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <h2>users</h2>
 
-  <div *ngIf="users.length > 0">
+  <div *ngIf="userList.length > 0">
     <div class="overflow-auto mt-5" style="max-height: 700px;">
       <ul>
-        <li *ngFor="let user of users" class="bg-secondary rounded p-4 mb-4 shadow">
+        <li *ngFor="let user of userList" class="bg-secondary rounded p-4 mb-4 shadow">
           {{ user.fullName }}
           <div class="buttons">
             <button class="btn btn-primary theButtons" (click)="showUserAdressService(user)"><fa-icon
@@ -24,7 +24,7 @@
     </div>
   </div>
 
-  <div *ngIf="users.length === 0">
+  <div *ngIf="userList.length === 0">
     <p>There is nothing here yet. Please add an user.</p>
   </div>
 </div>
