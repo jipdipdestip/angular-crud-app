@@ -51,44 +51,37 @@
       <form (ngSubmit)="saveUserChangesService()">
         <div class="form-group">
           <label for="editName">Name<span class="text-danger">*</span></label>
-          <input class="form-control" type="text" id="editName" name="editName" [(ngModel)]="selectedUser.name"
-            required>
+          <input class="form-control" type="text" id="editName" name="editName" [(ngModel)]="selectedUser.name" required>
         </div>
 
         <div class="form-group">
           <label for="editInfix">Infix</label>
-          <input class="form-control" type="text" id="editInfix" name="editInfix" [(ngModel)]="selectedUser.infix"
-            required>
+          <input class="form-control" type="text" id="editInfix" name="editInfix" [(ngModel)]="selectedUser.infix" required>
         </div>
 
         <div class="form-group">
           <label for="editLastname">Lastname<span class="text-danger">*</span></label>
-          <input class="form-control" type="text" id="editLastname" name="editLastname"
-            [(ngModel)]="selectedUser.lastname" required>
+          <input class="form-control" type="text" id="editLastname" name="editLastname" [(ngModel)]="selectedUser.lastname" required>
         </div>
 
         <div class="form-group">
           <label for="editStreet">Street<span class="text-danger">*</span></label>
-          <input class="form-control" type="text" id="editStreet" name="editStreet" [(ngModel)]="selectedUser.street"
-            required>
+          <input class="form-control" type="text" id="editStreet" name="editStreet" [(ngModel)]="selectedUser.street" required>
         </div>
 
         <div class="form-group">
           <label for="editHousenumber">Housenumber<span class="text-danger">*</span></label>
-          <input class="form-control" type="text" id="editHousenumber" name="editHousenumber"
-            [(ngModel)]="selectedUser.housenumber" required>
+          <input class="form-control" type="text" id="editHousenumber" name="editHousenumber" [(ngModel)]="selectedUser.housenumber" required>
         </div>
 
         <div class="form-group">
           <label for="editPostalcode">Postalcode<span class="text-danger">*</span></label>
-          <input class="form-control" type="text" id="editPostalcode" name="editPostalcode"
-            [(ngModel)]="selectedUser.postalcode" required>
+          <input class="form-control" type="text" id="editPostalcode" name="editPostalcode" [(ngModel)]="selectedUser.postalcode" required>
         </div>
 
         <div class="form-group">
           <label for="editCity">City<span class="text-danger">*</span></label>
-          <input class="form-control" type="text" id="editCity" name="editCity" [(ngModel)]="selectedUser.city"
-            required>
+          <input class="form-control" type="text" id="editCity" name="editCity" [(ngModel)]="selectedUser.city" required>
         </div>
 
         <button class="btn btn-success shadow mt-3" type="submit">Save Changes</button>
