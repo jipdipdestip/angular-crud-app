@@ -1,62 +1,58 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { LocalstorageManagmentService } from 'src/app/services/localstorage-managment.service';
+import { FormDataServiceService } from 'src/app/services/form-data-service.service';
 import { User } from 'src/app/user.class';
 
 @Component({
-  selector: 'app-user-form',
-  templateUrl: './user-form.component.html',
-  styleUrls: ['./user-form.component.scss']
+    selector: 'app-user-form',
+    templateUrl: './user-form.component.html',
+    styleUrls: ['./user-form.component.scss'],
 })
 export class UserFormComponent {
-  public userList: User[] = [];
-  public formData: any = {};
-  public name: string = '';
-  public infix: string = '';
-  public lastname: string = '';
-  public street: string = '';
-  public housenumber: string = '';
-  public postalcode: string = '';
-  public city: string = '';
+    name: string = '';
+    infix: string = '';
+    lastname: string = '';
+    street: string = '';
+    housenumber: string = '';
+    postalcode: string = '';
+    city: string = '';
 
-  constructor(private router: Router, public LocalstorageManagmentService: LocalstorageManagmentService) { }
+    constructor(
+        private router: Router,
+        private FormDataService: FormDataServiceService,
+    ) { }
 
-  onSubmit() {
-    if (
-      this.isFieldEmpty(this.name) ||
-      this.isFieldEmpty(this.lastname) ||
-      this.isFieldEmpty(this.street) ||
-      this.isFieldEmpty(this.housenumber) ||
-      this.isFieldEmpty(this.postalcode) ||
-      this.isFieldEmpty(this.city)
-    ) {
-      alert('please fill in the required fields')
-      return;
+
+
+    onSubmit() {
+
+        const newUser: User = {
+            id: new Date().getTime().toString(),
+            name: this.name,
+            infix: this.infix,
+            lastname: this.lastname,
+            street: this.street,
+            housenumber: this.housenumber,
+            postalcode: this.postalcode,
+            city: this.city,
+            fullName: `${this.name} ${this.infix} ${this.lastname}`,
+            fullAdress: `${this.street} ${this.housenumber}, ${this.postalcode} ${this.city}`,
+        };
+
+        this.FormDataService.addUser(newUser);
+
+        this.clearUserForm();
+        
+        this.router.navigate(['']);
     }
 
-    const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
-
-    const newUser = {
-      id: new Date().getTime().toString(),
-      name: this.name,
-      infix: this.infix,
-      lastname: this.lastname,
-      street: this.street,
-      housenumber: this.housenumber,
-      postalcode: this.postalcode,
-      city: this.city
-    };
-
-    storedUsers.push(newUser);
-
-    localStorage.setItem('users', JSON.stringify(storedUsers));
-
-    this.formData = {};
-    this.router.navigate([''])
-  }
-
-  isFieldEmpty(value: any): boolean {
-    return value === '' || value === null || value === undefined;
-  }
-
+    clearUserForm(){
+        this.name = '';
+        this.infix = '';
+        this.lastname = '';
+        this.street = '';
+        this.housenumber = '';
+        this.postalcode = '';
+        this.city = '';
+      }
 }

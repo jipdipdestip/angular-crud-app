@@ -74,7 +74,8 @@ export class UserListComponent implements OnInit {
   closePopup() {
     this.isModalOpen = false;
     this.isEditModalOpen = false;
-
+    console.log(User);
+    
   }
 
   clearUserForm(){
